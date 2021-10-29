@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
     selector: 'dropdown',
@@ -8,4 +8,9 @@ import { Component, Input } from "@angular/core";
 export class DropdownComponent {
     @Input() options: any[] = [];
     @Input() placeholder: string = '';
+    @Output() change: EventEmitter<string> = new EventEmitter<string>();
+    
+    onChange(value: string) {
+        this.change.emit(value);
+    } 
 }

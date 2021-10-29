@@ -23,13 +23,27 @@ export class AppComponent implements OnInit {
     private store: Store<{ state: AppState }>
   ) {
     this.state = store.select('state');
+    this.state.subscribe(state => {
+      this.regions = state.countries.regions
+      // this.countries = state.countries.countries
+    });
   }
 
   ngOnInit() {
-    this._apiService.getCountries('europe').subscribe((response) => {
+
+  }
+
+  regionChanged(region: Region) {
+    console.log('region: ', region);
+    this._apiService.getCountries(region).subscribe((response) => {
       this.countries = response;
       this.store.dispatch(setCountries({countries: response}));
       console.log('response: ', response);
     })
   }
+
+  countriesChanged() {
+
+  }
+
 }
