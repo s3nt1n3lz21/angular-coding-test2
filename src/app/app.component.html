@@ -1,6 +1,9 @@
-<select formControlName="region" id="type" class="form-control">
-  <option disabled selected>Select Region...</option>
-  <option>Europe</option>
-  <option>Asia</option>
-</select>
+<dropdown [options]="regions" [placeholder]="'Select Region...'"></dropdown>
+<dropdown [options]="countries" [placeholder]="'Select Country...'"></dropdown>
+<table>
+  <tr *ngFor="let country of countries">
+    {{ country.name.common }}
+  </tr>
+</table>
+
 

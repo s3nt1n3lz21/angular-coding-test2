@@ -1,7 +1,7 @@
 export type Region = 'europe' | 'asia';
 
 export interface Country {
-    "name": NameDetails,
+    name: NameDetails,
     "cca2": string,
     "cca3": string,
     "cioc": string,
@@ -180,9 +180,9 @@ export interface Country {
   }
 
 export interface NameDetails {
-    "common": string,
-    "official": string,
-    "nativeName": NativeName
+    common: string,
+    official: string,
+    nativeName: NativeName
 }
 
 export interface NativeName {

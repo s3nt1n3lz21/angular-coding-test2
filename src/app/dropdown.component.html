@@ -1,4 +1,4 @@
-<select [disabled]="countries.length == 0" formControlName="countries" id="type" class="form-control">
-    <option disabled selected>Select Country...</option>
-    <option *ngFor="let country of countries">{{ country }}</option>
+<select [disabled]="options.length == 0" formControlName="countries" id="type" class="form-control">
+    <option disabled selected>{{ placeholder }}</option>
+    <option *ngFor="let option of options">{{ country }}</option>
 </select>
