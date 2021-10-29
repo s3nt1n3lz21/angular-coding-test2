@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-coding-test2"
+    }
+  },
+  "defaultProject": "angular-coding-test2",
+  "cli": {
+    "analytics": false
+  }
 }
