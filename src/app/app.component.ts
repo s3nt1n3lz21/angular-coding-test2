@@ -49,5 +49,4 @@ export class AppComponent implements OnInit {
     console.log(countryName);
     this.selectedCountry = this.countries.filter((c) => c.name.common == countryName)[0];
   }
-
 }

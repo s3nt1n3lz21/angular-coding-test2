@@ -1,24 +1,33 @@
-<dropdown (change)="selectRegion($event.target.value)" [options]="regions" [placeholder]="'Select Region...'"></dropdown>
-<dropdown (change)="selectCountry($event.target.value)" [options]="countryNames" [placeholder]="'Select Country...'"></dropdown>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Capital</th>
-      <th>Population</th>
-      <th>Currencies</th>
-      <th>Flag</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngIf="selectedCountry">
-      <td>{{ selectedCountry.name.common }}</td>
-      <td>{{ selectedCountry?.capital[0] ? selectedCountry.capital[0] : '' }}</td>
-      <td>{{ selectedCountry.population }}</td>
-      <td>{{ selectedCountry.currencies }}</td>
-      <td>{{ selectedCountry.flag }}</td>
-    </tr>  
-  </tbody>
-</table>
+<div class="table-container">
+  <div class="table-header">
+    <dropdown class="dropdown" (change)="selectRegion($event.target.value)" [options]="regions" [placeholder]="'Select Region...'"></dropdown>
+    <dropdown class="dropdown" (change)="selectCountry($event.target.value)" [options]="countryNames" [placeholder]="'Select Country...'"></dropdown>
+  </div>
+  <div class="table-body">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Capital</th>
+          <th>Population</th>
+          <th>Currencies</th>
+          <th>Flag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="selectedCountry">
+          <td>{{ selectedCountry.name.common }}</td>
+          <td>{{ selectedCountry?.capital[0] ? selectedCountry.capital[0] : '' }}</td>
+          <td>{{ selectedCountry.population }}</td>
+          <td>{{ selectedCountry.currencies }}</td>
+          <td>{{ selectedCountry.flag }}</td>
+        </tr>  
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
 
 

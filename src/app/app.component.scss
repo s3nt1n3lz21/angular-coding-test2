@@ -1,0 +1,35 @@
+.table-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    min-height: 300px;
+
+    .table-header {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        align-items: center;
+
+        .dropdown {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .table-body {
+        display: flex;
+        flex: 1;
+    }
+}
+
+table {
+    flex: 1;
+    font-size: 30px;
+
+    td {
+        text-align: center;
+    }
+}
