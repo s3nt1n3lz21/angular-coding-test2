@@ -1,7 +1,21 @@
 <div class="table-container">
   <div class="table-header">
-    <dropdown class="dropdown" (change)="selectRegion($event.target.value)" [options]="regionNames" [placeholder]="'Select Region...'"></dropdown>
-    <dropdown class="dropdown" (change)="selectCountry($event.target.value)" [options]="countryNames" [placeholder]="'Select Country...'"></dropdown>
+    <div class="dropdown-container">
+      <div class="label">
+        Region: 
+      </div>
+      <div>
+        <dropdown class="dropdown" (change)="selectRegion($event.target.value)" [options]="regionNames" [placeholder]="'Select Region...'"></dropdown>
+      </div>
+    </div>
+    <div class="dropdown-container">
+      <div class="label">
+        Country:
+      </div>
+      <div>
+        <dropdown class="dropdown" (change)="selectCountry($event.target.value)" [options]="countryNames" [placeholder]="'Select Country...'"></dropdown>
+      </div>
+    </div>
   </div>
   <div class="table-body">
     <table>
