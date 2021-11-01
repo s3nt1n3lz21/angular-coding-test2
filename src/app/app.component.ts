@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
   // countries: any = ['country 1', 'country 2'];
   countries: Country[] = [];
   state: Observable<AppState>;
+  selectedCountry: Country = null;
+  countryNames: string[] = [];
 
   constructor(
     private _apiService: ApiService,
@@ -25,7 +27,6 @@ export class AppComponent implements OnInit {
     this.state = store.select('state');
     this.state.subscribe(state => {
       this.regions = state.countries.regions
-      // this.countries = state.countries.countries
     });
   }
 
@@ -33,17 +34,20 @@ export class AppComponent implements OnInit {
 
   }
 
-  regionChanged(region: Region) {
+  selectRegion(region: Region) {
     console.log('region: ', region);
     this._apiService.getCountries(region).subscribe((response) => {
       this.countries = response;
+      this.countryNames = response.map((country) => country.name.common);
+      console.log('countryNames: ', this.countryNames);
       this.store.dispatch(setCountries({countries: response}));
       console.log('response: ', response);
     })
   }
 
-  countriesChanged() {
-
+  selectCountry(countryName: string) {
+    console.log(countryName);
+    this.selectedCountry = this.countries.filter((c) => c.name.common == countryName)[0];
   }
 
 }

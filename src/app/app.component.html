@@ -1,5 +1,5 @@
-<dropdown (change)="regionChanged($event.target.value)" [options]="regions" [placeholder]="'Select Region...'"></dropdown>
-<dropdown (change)="countriesChanged($event.target.value)" [options]="countries" [placeholder]="'Select Country...'"></dropdown>
+<dropdown (change)="selectRegion($event.target.value)" [options]="regions" [placeholder]="'Select Region...'"></dropdown>
+<dropdown (change)="selectCountry($event.target.value)" [options]="countryNames" [placeholder]="'Select Country...'"></dropdown>
 <table>
   <thead>
     <tr>
@@ -11,12 +11,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let country of countries">
-      <td>{{ country.name.common }}</td>
-      <td>{{ country.capital[0] }}</td>
-      <td>{{ country.population }}</td>
-      <td>{{ country.currencies }}</td>
-      <td>{{ country.flag }}</td>
+    <tr *ngIf="selectedCountry">
+      <td>{{ selectedCountry.name.common }}</td>
+      <td>{{ selectedCountry?.capital[0] ? selectedCountry.capital[0] : '' }}</td>
+      <td>{{ selectedCountry.population }}</td>
+      <td>{{ selectedCountry.currencies }}</td>
+      <td>{{ selectedCountry.flag }}</td>
     </tr>  
   </tbody>
 </table>
