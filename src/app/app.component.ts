@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
-import { Country, Currency, Region } from './ICountries';
+import { Country, Region } from './ICountries';
 import { AppState } from './store/app.reducer';
 import { setCountries } from './store/countries.actions';
 
@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   state: Observable<AppState>;
   selectedCountry: Country = null;
   countryNames: string[] = [];
+  regionNames: string[] = [];
 
   constructor(
     private _apiService: ApiService,
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
     this.state = store.select('state');
     this.state.subscribe(state => {
       this.regions = state.countries.regions
+      this.regionNames = this.regions.map((region) => region[0].toUpperCase() + region.slice(1));
     });
   }
 
@@ -34,8 +36,8 @@ export class AppComponent implements OnInit {
 
   }
 
-  selectRegion(region: Region) {
-    // console.log('region: ', region);
+  selectRegion(regionStr: string) {
+    const region: Region = this.regions.filter((r) => r == regionStr.toLowerCase())[0];
     this._apiService.getCountries(region).subscribe((response) => {
       this.countries = response;
       this.countryNames = response.map((country) => country.name.common);
