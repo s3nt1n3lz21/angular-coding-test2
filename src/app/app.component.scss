@@ -36,6 +36,19 @@
         display: flex;
         flex: 1;
     }
+
+    .table-footer {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            font-size: 15px;
+            height: 30px;
+            width: 100px;
+        }
+    }
 }
 
 table {
