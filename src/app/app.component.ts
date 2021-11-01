@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
-import { Country, Region } from './ICountries';
+import { Country, Currency, Region } from './ICountries';
 import { AppState } from './store/app.reducer';
 import { setCountries } from './store/countries.actions';
 
@@ -35,11 +35,11 @@ export class AppComponent implements OnInit {
   }
 
   selectRegion(region: Region) {
-    console.log('region: ', region);
+    // console.log('region: ', region);
     this._apiService.getCountries(region).subscribe((response) => {
       this.countries = response;
       this.countryNames = response.map((country) => country.name.common);
-      console.log('countryNames: ', this.countryNames);
+      // console.log('countryNames: ', this.countryNames);
       this.store.dispatch(setCountries({countries: response}));
       console.log('response: ', response);
     })
@@ -48,5 +48,14 @@ export class AppComponent implements OnInit {
   selectCountry(countryName: string) {
     console.log(countryName);
     this.selectedCountry = this.countries.filter((c) => c.name.common == countryName)[0];
+  }
+
+  formatCurrency(currency: Object): string[] {
+    let map = new Map(Object.entries(currency));
+    const symbols: string[] = [];
+    map.forEach((value) => {
+      symbols.push(value.symbol)
+    })
+    return symbols;
   }
 }

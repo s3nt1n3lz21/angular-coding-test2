@@ -7,12 +7,7 @@ export interface Country {
     "cioc": string,
     "status": string,
     "unMember": false,
-    "currencies": {
-      "EUR": {
-        "name": "Euro",
-        "symbol": "€"
-      }
-    },
+    "currencies": Map<string, Currency>,
     "idd": {
       "root": "+3",
       "suffixes": [
@@ -196,5 +191,10 @@ export interface SQI {
 }
 
 export interface Currency {
-    
+    name: string;
+    symbol: string;
+}
+
+export interface Currencies {
+  
 }

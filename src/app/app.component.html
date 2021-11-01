@@ -19,7 +19,7 @@
           <td>{{ selectedCountry.name.common }}</td>
           <td>{{ selectedCountry?.capital[0] ? selectedCountry.capital[0] : '' }}</td>
           <td>{{ selectedCountry.population }}</td>
-          <td>{{ selectedCountry.currencies }}</td>
+          <td>{{ formatCurrency(selectedCountry.currencies) }}</td>
           <td>{{ selectedCountry.flag }}</td>
         </tr>  
       </tbody>
