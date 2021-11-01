@@ -55,8 +55,8 @@ export class AppComponent implements OnInit {
   formatCurrency(currency: Object): string[] {
     let map = new Map(Object.entries(currency));
     const symbols: string[] = [];
-    map.forEach((value) => {
-      symbols.push(value.symbol)
+    map.forEach((value, key) => {
+      symbols.push(key);
     })
     return symbols;
   }
